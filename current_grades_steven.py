@@ -5,18 +5,15 @@ import requests
 
 
 class Api:
-    # TODO: Demo api is currently used. Allowing switching between production and demo, or remove demo entirely after
-    #  development.
-    PRODUCTION_BASE_API_HOST = "https://aeries.gcccharters.org/Admin/api/v5"
-    DEMO_BASE_API_HOST = "https://demo.aeries.net/aeries"
+    BASE_API_HOST = "https://aeries.gcccharters.org/Admin/api/v5"
 
     # "InsertSTUIDNum" "
 
-    def __init__(self, school_id: str, item_id: str, api_key: str):
+    def __init__(self, school_id: str, item_id: str):
         """Initialize the API class."""
         self.school_id = school_id
         self.item_id = item_id
-        self.api_key = api_key
+        self.api_key = os.environ.get("AERIES_API_KEY")
         if not self.api_key:
             raise ValueError("AERIES_API_KEY environment variable not set.")
         self.request_headers = {
@@ -24,14 +21,14 @@ class Api:
             "AERIES-CERT": self.api_key,
         }
 
-    def get_current_grades_demo(self):
-        url = f"{self.DEMO_BASE_API_HOST}/api/v5/schools/{self.school_id}/ReportCard/{self.item_id}"
+    def get_current_grades(self):
+        url = f"{self.BASE_API_HOST}/schools/{self.school_id}/{self.item_id}"
         response = requests.get(url, headers=self.request_headers)
         print(response.text)
         return response.json()
 
     def get_current_grades_csv(self):
-        val = self.get_current_grades_demo()
+        val = self.get_current_grades()
         with open("current_grades.csv", "w") as f:
             w = csv.writer(f)
             w.writerow(val.keys())

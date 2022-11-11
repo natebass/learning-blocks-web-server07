@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>Item Details</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link href="{{ url_for('static', path='/materialize/css/materialize.min.css') }}" rel="stylesheet">
+    <!--Import jquery.js-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" defer></script>
+    <!--Import materialize.js-->
+    <script src="{{ url_for('static', path='/materialize/js/materialize.min.js') }}" defer></script>
+    <!--Import application dependencies-->
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', path='/init.js') }}" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Learning Blocks</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Aries</a></li>
+        </ul>
+        <ul id="nav-mobile" class="sidenav">
+            <li><a href="#">Aries</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center orange-text">Aries Report Cards</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">Find student data and download reports within the Aries school system</h5>
+        </div>
+        <div class="row center">
+            <a href="#" id="download-button"
+               class="btn-large waves-effect waves-light orange">Learn more</a>
+        </div>
+        <br><br>
+    </div>
+</div>
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col s5 offset-s3">
+                <form id="apiQueryForm">
+                    <div class="input-field">
+                        <label for="schoolId">School ID</label><br>
+                        <input class="autocomplete-school-id" type="text" id="schoolId" name="school_id" value="994"><br>
+                    </div>
+                    <div class="input-field">
+                        <label for="itemId">Student ID</label><br>
+                        <input class="autocomplete-student-id" type="text" id="itemId" name="item_id" value="99400002"><br>
+                    </div>
+                    <div class="input-field">
+                        <label for="apiKey">Aries API Key</label><br>
+                        <input class="autocomplete-aries-api-key" type="text" id="apiKey" name="api_key" value="477abe9e7d27439681d62f4e0de1f5e1"><br>
+                    </div>
+                    <div style="font-size: 16px; line-height: 3.0;">Production API</div>
+                    <!-- Switch -->
+                    <div class="switch">
+                        <label>
+                            Demo
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Production
+                        </label>
+                    </div>
+                    <br>
+                    <button class="btn waves-effect waves-light orange" type="submit" name="action">Generate query
+                        <i class="material-icons right">preview</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
+<footer class="page-footer orange">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">Add information</p>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Aries</a></li>
+                    <li><a class="white-text" href="#!">PowerSchool</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="#">Company</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
