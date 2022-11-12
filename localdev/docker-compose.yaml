@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  backend_image:
+    image: python-demo-backend
+    profiles:
+      - build
+    build:
+      context: ../
+      dockerfile: localdev/backend.Dockerfile
+      args:
+        UID: "${UID?UID Environment Variable required}"
+
+  run:
+    image: python-demo-backend
+    profiles:
+      - run
+    # environment:
+    #   AWS_PROFILE: "${AWS_PROFILE?AWS_PROFILE environment variable is required}"
+    #   AWS_REGION: "${AWS_REGION?AWS_REGION environment variable is required}"
+    volumes:
+      - ../:/home/user/app
+        # - "${HOME}/.aws:/home/node/.aws"
+    working_dir: /home/user/app
+    command: "./bin/run.sh"
+    ports:
+      - 8118:8118
